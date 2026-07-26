@@ -1,6 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/home/Navbar";
 import Home from "./pages/Home";
+import Task from "./pages/Task"
 
 const pageBackground = {
   background:
@@ -15,13 +16,9 @@ function App() {
     >
       <Navbar />
       
-      {/* Здесь React Router будет подставлять нужную страницу в зависимости от URL */}
       <Routes>
         <Route path="/" element={<Home />} />
-        {/* Когда создашь другие страницы, просто добавь их сюда: */}
-        {/* <Route path="/goals" element={<GoalsPage />} /> */}
-        {/* <Route path="/tasks" element={<TasksPage />} /> */}
-        {/* <Route path="/analytics" element={<AnalyticsPage />} /> */}
+        <Route path="/tasks" element={<Task/>} />
       </Routes>
     </main>
   );
