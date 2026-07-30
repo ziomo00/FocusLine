@@ -1,10 +1,10 @@
-export type taskDifficulty = "easy" | "medium" | "hard";
-export type taskStatus = "todo" | "in-progress" | "done";
+export type TaskDifficulty = "easy" | "medium" | "hard";
+export type TaskStatus = "todo" | "in-progress" | "done";
 
-export interface task {
+export interface Task {
     id: string;
     title: string;
     description?: string;
-    difficulty: taskDifficulty;
-    status: taskStatus;
+    difficulty: TaskDifficulty;
+    status: TaskStatus;
 }

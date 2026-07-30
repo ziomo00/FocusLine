@@ -1,7 +1,7 @@
-import type {task} from "../../types/task";
+import type {Task} from "../../types/task";
 
 interface TaskListItemProps{
-    item:task;
+    item:Task;
 }
 
 export default function TaskListItem({item}:TaskListItemProps){

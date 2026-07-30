@@ -1,9 +1,10 @@
-import type {task} from "../types/task";
+import type {Task} from "../types/task";
 import {useState} from "react";
-import TaskListItem from "../components/task/TaskListItem"
-import TaskModal from "../components/task/TaskModal";
+import TaskDetail from "../components/task/TaskDetail";
+import TaskSidebar from "../components/task/TaskSidebar";
+import TaskListContainer from "../components/task/TaskListContainer";
 
-const mockTasks: task[] = [
+const mockTasks: Task[] = [
     {
         id:"one",
         title:"t-1",
@@ -13,22 +14,21 @@ const mockTasks: task[] = [
     }
 ]
 
-function Task (){
-    const [tasks, setTasks] = useState<task[]>(mockTasks);
-
-    const handleAddTask = (newTask: task) => {
+function TaskPage (){
+    const [tasks, setTasks] = useState<Task[]>(mockTasks);
+    const handleAddTask = (newTask: Task) => {
         setTasks([...tasks,newTask]);
     }
-    
     return(
-        <>
-            <ul>
-                {tasks.map((task)=>{
-                    return<TaskListItem key={task.id} item={task}/>
-                })}
-            </ul>
-            <TaskModal onAddTask={handleAddTask}/>
-        </>
+        <div className="workspace grid grid-cols-[238px_minmax(500px,1fr)_464px] gap-[17px] items-stretch min-h-[704px]">
+            <TaskSidebar/>
+
+            <TaskListContainer onAddTask={handleAddTask} tasks={tasks} />
+
+            {/* 3. Правая колонка */}
+            <TaskDetail />
+
+        </div>
     );
 }
-export default Task;
+export default TaskPage;

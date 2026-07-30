@@ -1,15 +1,15 @@
-import type { taskStatus, task, taskDifficulty} from "../../types/task"
+import type { TaskStatus, Task, TaskDifficulty} from "../../types/task"
 import { useState } from "react";
 
 interface TaskModalProps{
-    onAddTask:(newTask: task)=>void;
+    onAddTask:(newTask: Task)=>void;
 }
 
 export default function TaskModal({onAddTask}: TaskModalProps) {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
-    const [difficulty, setDifficulty] = useState<taskDifficulty>("easy");
-    const [status, setStatus] = useState<taskStatus>("todo");
+    const [difficulty, setDifficulty] = useState<TaskDifficulty>("easy");
+    const [status, setStatus] = useState<TaskStatus>("todo");
 
     return(
         <div className="mt-5 p-[10px] border border-white">
@@ -29,7 +29,7 @@ export default function TaskModal({onAddTask}: TaskModalProps) {
             />
             <select
                 value={difficulty}
-                onChange={(e)=>setDifficulty(e.target.value as taskDifficulty)}
+                onChange={(e)=>setDifficulty(e.target.value as TaskDifficulty)}
                 className="text-black"
             >
                 <option value="easy">Легко</option>
@@ -38,7 +38,7 @@ export default function TaskModal({onAddTask}: TaskModalProps) {
             </select>
             <select
                 value={status}
-                onChange={(e)=>setStatus(e.target.value as taskStatus)}
+                onChange={(e)=>setStatus(e.target.value as TaskStatus)}
                 className="text-black"
             >
                 <option value="todo">К выполнению</option>
