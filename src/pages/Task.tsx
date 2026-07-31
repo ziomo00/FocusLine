@@ -17,7 +17,7 @@ const mockTasks: Task[] = [
 function TaskPage (){
     const [tasks, setTasks] = useState<Task[]>(mockTasks);
     const handleAddTask = (newTask: Task) => {
-        setTasks([...tasks,newTask]);
+        setTasks((currentTasks)=>[...currentTasks,newTask]);
     }
     return(
         <div className="workspace grid grid-cols-[238px_minmax(500px,1fr)_464px] gap-[17px] items-stretch min-h-[704px]">

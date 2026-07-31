@@ -11,14 +11,14 @@ interface TaskListContainerProps {
 const TaskListContainer = ({tasks, onAddTask}:TaskListContainerProps) => {
 
     return(
-        <>
+        <section>
             <ul>
-                {tasks.map((task)=>{
-                    return<TaskListItem key={task.id} item={task}/>
-                })}
+                {tasks.map((task)=>(
+                    <TaskListItem key={task.id} item={task}/>
+                ))}
             </ul>
             <TaskModal onAddTask={onAddTask}/>
-        </>
+        </section>
     );
 }
 
