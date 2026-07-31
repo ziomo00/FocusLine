@@ -6,15 +6,20 @@ import TaskModal from "../task/TaskModal";
 interface TaskListContainerProps {
     tasks:Task[];
     onAddTask: (newTask:Task) => void;
+    onSelectTask:(taskId:string) => void;
 }
 
-const TaskListContainer = ({tasks, onAddTask}:TaskListContainerProps) => {
+const TaskListContainer = ({tasks, onAddTask, onSelectTask}:TaskListContainerProps) => {
 
     return(
         <section>
             <ul>
                 {tasks.map((task)=>(
-                    <TaskListItem key={task.id} item={task}/>
+                    <TaskListItem 
+                        key={task.id} 
+                        item={task}
+                        onSelect={()=> onSelectTask(task.id)}
+                    />
                 ))}
             </ul>
             <TaskModal onAddTask={onAddTask}/>

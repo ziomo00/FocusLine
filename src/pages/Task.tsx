@@ -15,7 +15,9 @@ const mockTasks: Task[] = [
 ]
 
 function TaskPage (){
-    const [tasks, setTasks] = useState<Task[]>(mockTasks);
+    const [tasks, setTasks] = useState<Task[]>(mockTasks);//храним состояние всех задач
+    const [selectedTaskId, setSelectedTaskId] = useState<string | null>(null)//храним id выбранной задачи
+    const activeTask = tasks.find(task => task.id === selectedTaskId) || null
     const handleAddTask = (newTask: Task) => {
         setTasks((currentTasks)=>[...currentTasks,newTask]);
     }
@@ -23,10 +25,10 @@ function TaskPage (){
         <div className="workspace grid grid-cols-[238px_minmax(500px,1fr)_464px] gap-[17px] items-stretch min-h-[704px]">
             <TaskSidebar/>
 
-            <TaskListContainer onAddTask={handleAddTask} tasks={tasks} />
+            <TaskListContainer onAddTask={handleAddTask} tasks={tasks} onSelectTask={setSelectedTaskId} />
 
             {/* 3. Правая колонка */}
-            <TaskDetail />
+            <TaskDetail task={activeTask} />
 
         </div>
     );
